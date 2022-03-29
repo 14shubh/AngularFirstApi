@@ -4,7 +4,7 @@ exports.SignUp = (req, res, next)=>{
     User.create(req.body).then(result=>{
         res.status(201).json(result);
     }).catch(err=>{
-        res.status(500).json(err,{msg : 'Something went wrong'});
+        res.status(500).json(err);
     });
 };
 
