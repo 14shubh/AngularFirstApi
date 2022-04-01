@@ -1,4 +1,5 @@
 const User = require('../model/userModel');
+const jwt = require('jsonwebtoken');
 require('../database/database_config');
 exports.SignUp = (req, res, next)=>{
     User.create(req.body).then(result=>{
@@ -12,7 +13,14 @@ exports.SignIn = (req, res, next) => {
     User.findOne(req.body).then(result => {
         if (result){
             console.log('login Successful');
-           return res.status(201).json(result);
+            let payload ={subject: result._id};
+            let token = jwt.sign(payload,'adkgfcgjagdvjgjcvkgdabckjbgjkab');
+
+           return res.status(201).json({
+               status : true,
+               result : result,
+               token : token
+           });
         }else{
             console.log('login Failure');
         }
