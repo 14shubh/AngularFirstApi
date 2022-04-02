@@ -2,7 +2,7 @@ const category = require('../model/categoryModel');
 
 exports.addCategory = (req, res, next) => {
     categoryName = req.body.categoryName;
-    categoryImage = 'https://angular-first-api.herokuapp.com/categoryImages/' +req.file.originalname;
+    categoryImage = req.file.originalname;
 
     category.create({categoryName: categoryName, categoryImage: categoryImage}).then((result) => {
         res.status(201).json({
