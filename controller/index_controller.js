@@ -14,7 +14,7 @@ exports.SignIn = (req, res, next) => {
         if (result){
             console.log('login Successful');
             let payload ={subject: result._id};
-            let token = jwt.sign(payload,'adkgfcgjagdvjgjcvkgdabckjbgjkab');
+            let token = jwt.sign(payload,'adkgshubhambahutsamjhhdarhkabhigaltinhikrteckjbgjkab');
 
            return res.status(201).json({
                status : true,
