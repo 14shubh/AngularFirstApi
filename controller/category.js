@@ -9,7 +9,7 @@ cloudinary.config({
 exports.addCategory = async (req, res, next) => {
 
     categoryName = req.body.categoryName;
-    categoryImage = 'https://angular-first-app.herokuapp.com/images/categoryImages/'+req.file.filename;
+    categoryImage = 'https://angular-first-api.herokuapp.com/images/categoryImages/'+req.file.filename;
 
     await cloudinary.v2.uploader.upload(req.file.path)
     .then((result) => {
