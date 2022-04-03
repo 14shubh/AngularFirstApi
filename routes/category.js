@@ -13,4 +13,5 @@ const storage = multer.diskStorage({
 const upload = multer({storage:storage});
 
 router.post('/add-category',upload.single('categoryImage'),CategoryController.addCategory);
+router.get('/view-category',CategoryController.viewCategory);
 module.exports = router;
