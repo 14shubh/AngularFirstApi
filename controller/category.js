@@ -40,3 +40,18 @@ exports.viewCategory = (req, res, next)=>{
         res.status(500).json({message: 'somthing went wrong'});
     });
 }
+
+exports.deleteCategory = (req, res, next)=>{
+    
+    category.deleteOne({Category_Id: req.body.Category_id}).then((result) => {
+        if(result){
+            console.log('success', result);
+            return res.status(201).json(result);
+        }else{
+            console.log('error',result);
+        }
+    }).catch((err) => {
+        res.status(500).json({status: 'error'});
+    });
+    // console.log(req.body.Category_id);
+}

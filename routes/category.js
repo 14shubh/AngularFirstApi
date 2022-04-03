@@ -14,4 +14,5 @@ const upload = multer({storage:storage});
 
 router.post('/add-category',upload.single('categoryImage'),CategoryController.addCategory);
 router.get('/view-category',CategoryController.viewCategory);
+router.post('/delete-category',CategoryController.deleteCategory);
 module.exports = router;
