@@ -20,14 +20,18 @@ exports.addCategory = async (req, res, next) => {
 
     category.create({categoryName: categoryName, categoryImage: categoryImage})
     .then((result) => {
-        return res.status(201).json({
-            status: 'success',
-            result: result
-        })
+        if(result){
+            return res.status(201).json({
+                status: 'success',
+                result: result
+            });
+        }else{
+            return res.status(500).json({error: 'Can not add category'});
+        }
     }).catch((err) => {
         console.log(err);
         return res.status(500).json({
-            message: 'Somthing went wrong'
+            message: 'Can not add category'
         });
         
     });
