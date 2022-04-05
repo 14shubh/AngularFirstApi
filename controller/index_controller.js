@@ -10,8 +10,10 @@ exports.SignUp = (req, res, next)=>{
 };
 
 exports.SignIn = (req, res, next) => {
+    console.log(req.body);
     User.findOne(req.body).then(result => {
         if (result){
+            console.log(result);
             console.log('login Successful');
             let payload ={subject: result._id};
             let token = jwt.sign(payload,'adkgshubhambahutsamjhhdarhkabhigaltinhikrteckjbgjkab');

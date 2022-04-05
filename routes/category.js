@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const CategoryController = require('../controller/category');
+const tokenVerification = require('../middleware/token_verification');
 
 const storage = multer.diskStorage({
     destination : 'public/images/categoryImages',
@@ -12,7 +13,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage:storage});
 
-router.post('/add-category',upload.single('categoryImage'),CategoryController.addCategory);
-router.get('/view-category',CategoryController.viewCategory);
-router.post('/delete-category',CategoryController.deleteCategory);
+router.post('/add-category',upload.single('categoryImage'),tokenVerification.tokenVerification,CategoryController.addCategory);
+router.get('/view-category',tokenVerification.tokenVerification,CategoryController.viewCategory);
+router.post('/delete-category',tokenVerification.tokenVerification,CategoryController.deleteCategory);
 module.exports = router;
